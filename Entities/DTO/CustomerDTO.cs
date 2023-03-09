@@ -6,15 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Entities.DTO
 {
-    public class Customer : IEntity
+    public class CustomerDTO :IDto
     {
         public int Id { get; set; }
         public string TaxIdentificationNumber { get; set; }
-        public string CompanyName { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
+        public string CompanyName { get; set; }       
         public string TaxPlateYear { get; set; }
         public DateTime ActivityCertificateDate { get; set; }
         public DateTime SignatureCircularDate { get; set; }
