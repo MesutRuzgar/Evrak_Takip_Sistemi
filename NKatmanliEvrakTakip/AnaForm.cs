@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
 
 namespace EvrakTakipSistemi
 {
@@ -23,17 +24,40 @@ namespace EvrakTakipSistemi
         }
 
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+        dbAngunContext db = new dbAngunContext();
+
 
         private void AnaForm_Load(object sender, EventArgs e)
         {
             FillCustomerTable();
         }
 
-        private void FillCustomerTable()
+        private void btnTemizle_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = customerManager.GetCustomerDto();
-            Gecerlimi();
+            ClearForm();
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                tbxId.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                mskVkn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tbxAd.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                tbxVergiYili.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString();
+                tbxFaaliyetBelgesiTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString(), out DateTime dateFaaliyet) ? dateFaaliyet.ToShortDateString() : "";
+                tbxImzaSirkusuTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString(), out DateTime dateImza) ? dateImza.ToShortDateString() : "";
+
+                rtbxFirmaYetkili.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value?.ToString();
+            }
+            catch
+            {
+
+                MessageBox.Show("Geçersiz işlem!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        //METHODS
         private void ClearForm()
         {
             tbxId.Text = string.Empty;
@@ -43,6 +67,11 @@ namespace EvrakTakipSistemi
             tbxFaaliyetBelgesiTarih.Text = string.Empty;
             tbxImzaSirkusuTarih.Text = string.Empty;
             rtbxFirmaYetkili.Text = string.Empty;
+        }
+        private void FillCustomerTable()
+        {
+            dataGridView1.DataSource = customerManager.GetCustomerDto();
+            Gecerlimi();
         }
         private void Gecerlimi()
         {
@@ -93,30 +122,96 @@ namespace EvrakTakipSistemi
             }
         }
 
-        private void btnTemizle_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-        }
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void btnGuncelle_Click(object sender, EventArgs e)
         {
             try
             {
-                tbxId.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                mskVkn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                tbxAd.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                tbxVergiYili.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString();
-                tbxFaaliyetBelgesiTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString(), out DateTime dateFaaliyet) ? dateFaaliyet.ToShortDateString() : "";
-                tbxImzaSirkusuTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString(), out DateTime dateImza) ? dateImza.ToShortDateString() : "";
+                int id = int.Parse(tbxId.Text);
+                var customer = db.Customers.Find(id);
+                if (customer != null)
+                {
+                    customer.TaxIdentificationNumber = mskVkn.Text;
+                    customer.CompanyName = tbxAd.Text;
+                    customer.TaxPlateYear = tbxVergiYili.Text;
+                    if (!string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text))
+                    {
+                        customer.ActivityCertificateDate = DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
+                    }
 
-                rtbxFirmaYetkili.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value?.ToString();
+                    if (!string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text))
+                    {
+                        customer.SignatureCircularDate = DateTime.Parse(tbxImzaSirkusuTarih.Text);
+                    }
+                    customer.CompanyOfficials = rtbxFirmaYetkili.Text;
+                    customerManager.Update(customer);
+                    MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FillCustomerTable();
+                }
             }
             catch
             {
 
-                MessageBox.Show("Geçersiz işlem!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Güncelleme işlemi sırasında bir hata oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(tbxId.Text);
+                var customer = db.Customers.Find(id);
+                if (customer != null)
+                {
+                    customerManager.Delete(customer);
+                    MessageBox.Show("Silme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FillCustomerTable();
+                }
+            }
+            catch
+            {
+
+                MessageBox.Show("Silme işlemi sırasında bir hata oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                Customer customer = new Customer();
+                customer.TaxIdentificationNumber = mskVkn.Text;
+                customer.CompanyName = tbxAd.Text;
+                customer.TaxPlateYear = tbxVergiYili.Text;
+
+                if (!string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text))
+                {
+                    customer.ActivityCertificateDate = DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
+                }
+
+                if (!string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text))
+                {
+                    customer.SignatureCircularDate = DateTime.Parse(tbxImzaSirkusuTarih.Text);
+                }
+
+                customer.CompanyOfficials = rtbxFirmaYetkili.Text;
+                customerManager.Add(customer);
+                MessageBox.Show("Ekleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FillCustomerTable();
+                ClearForm();
+            }
+            catch 
+            {
+
+                MessageBox.Show("Ekleme işlemi sırasında bir hata oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
         }
     }
 
 }
+
+

@@ -363,6 +363,7 @@ namespace EvrakTakipSistemi
             btnGuncelle.TabIndex = 10;
             btnGuncelle.Text = "GÜNCELLE";
             btnGuncelle.UseVisualStyleBackColor = true;
+            btnGuncelle.Click += btnGuncelle_Click;
             // 
             // btnSil
             // 
@@ -372,6 +373,7 @@ namespace EvrakTakipSistemi
             btnSil.TabIndex = 9;
             btnSil.Text = "SİL";
             btnSil.UseVisualStyleBackColor = true;
+            btnSil.Click += btnSil_Click;
             // 
             // btnEkle
             // 
@@ -381,6 +383,7 @@ namespace EvrakTakipSistemi
             btnEkle.TabIndex = 8;
             btnEkle.Text = "EKLE";
             btnEkle.UseVisualStyleBackColor = true;
+            btnEkle.Click += btnEkle_Click;
             // 
             // rtbxFirmaYetkili
             // 
