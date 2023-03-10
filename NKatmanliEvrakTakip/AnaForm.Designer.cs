@@ -287,6 +287,7 @@ namespace EvrakTakipSistemi
             btnIletisim.TabIndex = 22;
             btnIletisim.Text = "İLETİŞİM BİLGİLERİ";
             btnIletisim.UseVisualStyleBackColor = true;
+            btnIletisim.Click += btnIletisim_Click;
             // 
             // pictureBox5
             // 

@@ -22,7 +22,8 @@ namespace EvrakTakipSistemi
             InitializeComponent();
 
         }
-
+        public static string? tel;
+        public static string? email;
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
         dbAngunContext db = new dbAngunContext();
 
@@ -200,6 +201,24 @@ namespace EvrakTakipSistemi
                 Customer customer = new Customer();
                 customer.TaxIdentificationNumber = mskVkn.Text;
                 customer.CompanyName = tbxAd.Text;
+
+                if (MessageBox.Show("İletişim bilgileri eklemek istiyor musunuz?", "Bilgilendirme Penceresi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    IletısımKayıt fr = new IletısımKayıt();
+                    DialogResult result2 = fr.ShowDialog();
+
+                    if (result2 == DialogResult.OK)
+                    {
+                        customer.Phone = tel;
+                        customer.Email = email;
+                    }
+                    else
+                    {
+                        customer.Phone = null;
+                        customer.Email = null;
+                    }
+                }
+
                 customer.TaxPlateYear = tbxVergiYili.Text;
 
                 if (!string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text))
@@ -225,6 +244,20 @@ namespace EvrakTakipSistemi
             }
 
 
+        }
+
+        private void btnIletisim_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbxId.Text))
+            {
+                MessageBox.Show("Lütfen bir müşteri seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                IletisimFormu frm = new IletisimFormu();
+                frm.id = tbxId.Text;
+                frm.Show();
+            }
         }
     }
 
