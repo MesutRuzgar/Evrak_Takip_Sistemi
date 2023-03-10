@@ -26,14 +26,15 @@ namespace EvrakTakipSistemi
 
         private void AnaForm_Load(object sender, EventArgs e)
         {
-            GetList();
+            FillCustomerTable();
         }
 
-        private void GetList()
+        private void FillCustomerTable()
         {
             dataGridView1.DataSource = customerManager.GetCustomerDto();
+            Gecerlimi();
         }
-        private void Clear()
+        private void ClearForm()
         {
             tbxId.Text = string.Empty;
             mskVkn.Text = string.Empty;
@@ -43,10 +44,58 @@ namespace EvrakTakipSistemi
             tbxImzaSirkusuTarih.Text = string.Empty;
             rtbxFirmaYetkili.Text = string.Empty;
         }
+        private void Gecerlimi()
+        {
+            DataGridViewCellStyle renk = new DataGridViewCellStyle();
+            DateTime bugun = DateTime.Today;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    if (!string.IsNullOrEmpty(row.Cells[5].Value?.ToString()))
+                    {
+                        DateTime dtDbImzaYili;
+                        if (DateTime.TryParse(row.Cells[5].Value.ToString(), out dtDbImzaYili))
+                        {
+                            renk.BackColor = (dtDbImzaYili >= bugun) ? Color.YellowGreen : Color.Firebrick;
+                            row.Cells[5].Style.BackColor = renk.BackColor;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(row.Cells[4].Value?.ToString()))
+                    {
+                        DateTime dtDbFaaliyet;
+                        if (DateTime.TryParse(row.Cells[4].Value.ToString(), out dtDbFaaliyet))
+                        {
+                            DateTime gecerliTarih = dtDbFaaliyet.AddDays(60);
+                            renk.BackColor = (gecerliTarih >= bugun) ? Color.YellowGreen : Color.Firebrick;
+                            row.Cells[4].Style.BackColor = renk.BackColor;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(row.Cells[3].Value?.ToString()))
+                    {
+                        int buYil = bugun.Year;
+                        int vergiYili = buYil - 1;
+                        renk.BackColor = (row.Cells[3].Value.ToString() == Convert.ToString(vergiYili)) ? Color.YellowGreen : Color.Firebrick;
+                        row.Cells[3].Style.BackColor = renk.BackColor;
+                    }
+
+
+                    if (string.IsNullOrEmpty(row.Cells[5].Value?.ToString()) &&
+                        string.IsNullOrEmpty(row.Cells[4].Value?.ToString()) &&
+                        string.IsNullOrEmpty(row.Cells[3].Value?.ToString()))
+                    {
+                        renk.BackColor = Color.White;
+                    }
+                }
+            }
+        }
 
         private void btnTemizle_Click(object sender, EventArgs e)
         {
-            Clear();
+            ClearForm();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

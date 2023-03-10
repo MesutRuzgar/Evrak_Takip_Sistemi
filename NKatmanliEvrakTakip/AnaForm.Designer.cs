@@ -472,7 +472,7 @@ namespace EvrakTakipSistemi
         private System.Windows.Forms.TextBox tbxFaaliyetBelgesiTarih;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn TaxIdentificationNumber;
-        private DataGridViewTextBoxColumn CompanyName;
+        private new DataGridViewTextBoxColumn CompanyName;
         private DataGridViewTextBoxColumn TaxPlateYear;
         private DataGridViewTextBoxColumn ActivityCertificateDate;
         private DataGridViewTextBoxColumn SignatureCircularDate;
