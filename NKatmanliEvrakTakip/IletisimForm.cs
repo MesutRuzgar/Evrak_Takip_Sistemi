@@ -13,6 +13,8 @@ using Business.Concrete;
 using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using System.ComponentModel.DataAnnotations;
+using Business.Validation;
 
 namespace EvrakTakipSistemi
 {
@@ -27,7 +29,7 @@ namespace EvrakTakipSistemi
         public string id;
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
         dbAngunContext db = new dbAngunContext();
-
+        CustomerValidator validator = new CustomerValidator();
 
         private void IletisimFormu_Load(object sender, EventArgs e)
         {
@@ -56,8 +58,20 @@ namespace EvrakTakipSistemi
                 var customer = db.Customers.Find(id);
                 customer.Phone = mskTel.Text;
                 customer.Email = tbxEmail.Text;
-                customerManager.Update(customer);
-                MessageBox.Show("İletişim bilgileri güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                var validationResult = validator.Validate(customer);
+
+                if (validationResult.IsValid)
+                {
+                    customerManager.Update(customer);
+                    MessageBox.Show("İletişim bilgileri güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                
+                    string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
+                    MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
             catch 

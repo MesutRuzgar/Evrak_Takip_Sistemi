@@ -4,6 +4,7 @@ using Entities.Concrete;
 using Entities.DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Business.Concrete
             _customerDal = customerDal;
         }
 
+       
         public void Add(Customer customer)
         {
             _customerDal.Add(customer);
