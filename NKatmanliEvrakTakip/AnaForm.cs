@@ -126,26 +126,34 @@ namespace EvrakTakipSistemi
         {
             try
             {
-                int id = int.Parse(tbxId.Text);
-                var customer = db.Customers.Find(id);
-                if (customer != null)
+                if (!string.IsNullOrEmpty(tbxId.Text))
                 {
-                    customer.TaxIdentificationNumber = mskVkn.Text;
-                    customer.CompanyName = tbxAd.Text;
-                    customer.TaxPlateYear = tbxVergiYili.Text;
-                    if (!string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text))
+                    int id = int.Parse(tbxId.Text);
+                    var customer = db.Customers.Find(id);
+                    if (customer != null)
                     {
-                        customer.ActivityCertificateDate = DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
-                    }
+                        customer.TaxIdentificationNumber = mskVkn.Text;
+                        customer.CompanyName = tbxAd.Text;
+                        customer.TaxPlateYear = tbxVergiYili.Text;
+                        if (!string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text))
+                        {
+                            customer.ActivityCertificateDate = DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
+                        }
 
-                    if (!string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text))
-                    {
-                        customer.SignatureCircularDate = DateTime.Parse(tbxImzaSirkusuTarih.Text);
+                        if (!string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text))
+                        {
+                            customer.SignatureCircularDate = DateTime.Parse(tbxImzaSirkusuTarih.Text);
+                        }
+                        customer.CompanyOfficials = rtbxFirmaYetkili.Text;
+                        customerManager.Update(customer);
+                        MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FillCustomerTable();
+                        ClearForm();
                     }
-                    customer.CompanyOfficials = rtbxFirmaYetkili.Text;
-                    customerManager.Update(customer);
-                    MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FillCustomerTable();
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir müşteri seçiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch
@@ -160,13 +168,21 @@ namespace EvrakTakipSistemi
         {
             try
             {
-                int id = int.Parse(tbxId.Text);
-                var customer = db.Customers.Find(id);
-                if (customer != null)
+                if (!string.IsNullOrEmpty(tbxId.Text))
                 {
-                    customerManager.Delete(customer);
-                    MessageBox.Show("Silme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FillCustomerTable();
+                    int id = int.Parse(tbxId.Text);
+                    var customer = db.Customers.Find(id);
+                    if (customer != null)
+                    {
+                        customerManager.Delete(customer);
+                        MessageBox.Show("Silme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FillCustomerTable();
+                        ClearForm();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir müşteri seçiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch
@@ -179,7 +195,7 @@ namespace EvrakTakipSistemi
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 Customer customer = new Customer();
                 customer.TaxIdentificationNumber = mskVkn.Text;
@@ -202,12 +218,12 @@ namespace EvrakTakipSistemi
                 FillCustomerTable();
                 ClearForm();
             }
-            catch 
+            catch
             {
 
                 MessageBox.Show("Ekleme işlemi sırasında bir hata oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
 
         }
     }
