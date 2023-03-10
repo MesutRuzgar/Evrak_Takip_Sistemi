@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 
 namespace EvrakTakipSistemi
 {
@@ -20,6 +21,13 @@ namespace EvrakTakipSistemi
             InitializeComponent();
 
         }
+
+        CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+        private void AnaForm_Load(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = customerManager.GetCustomerDto();
+        }
     }
-       
+
 }

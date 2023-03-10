@@ -15,6 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             optionsBuilder.UseSqlServer("server=RUZGAR;user id=sa;password=123456;initial catalog=dbAngun;TrustServerCertificate=True");
         }
+    
         public DbSet<Customer> Customers { get; set; }
     }
 }

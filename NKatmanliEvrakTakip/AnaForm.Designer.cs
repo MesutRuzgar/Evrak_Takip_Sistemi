@@ -30,362 +30,411 @@ namespace EvrakTakipSistemi
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbxSearch = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.mskVkn = new System.Windows.Forms.MaskedTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbxAd = new System.Windows.Forms.TextBox();
-            this.tbxVergiYili = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbxİmzaSirkusuTarih = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnIletisim = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnTemizle = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tbxId = new System.Windows.Forms.TextBox();
-            this.btnGuncelle = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
-            this.btnEkle = new System.Windows.Forms.Button();
-            this.rtbxFirmaYetkili = new System.Windows.Forms.RichTextBox();
-            this.tbxFaaliyetBelgesiTarih = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            groupBox1 = new GroupBox();
+            dataGridView1 = new DataGridView();
+            label1 = new Label();
+            tbxSearch = new TextBox();
+            label2 = new Label();
+            mskVkn = new MaskedTextBox();
+            label3 = new Label();
+            tbxAd = new TextBox();
+            tbxVergiYili = new TextBox();
+            label4 = new Label();
+            label5 = new Label();
+            tbxİmzaSirkusuTarih = new TextBox();
+            label6 = new Label();
+            label7 = new Label();
+            groupBox2 = new GroupBox();
+            btnIletisim = new Button();
+            pictureBox5 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            btnTemizle = new Button();
+            label8 = new Label();
+            tbxId = new TextBox();
+            btnGuncelle = new Button();
+            btnSil = new Button();
+            btnEkle = new Button();
+            rtbxFirmaYetkili = new RichTextBox();
+            tbxFaaliyetBelgesiTarih = new TextBox();
+            pictureBox1 = new PictureBox();
+            Id = new DataGridViewTextBoxColumn();
+            TaxIdentificationNumber = new DataGridViewTextBoxColumn();
+            CompanyName = new DataGridViewTextBoxColumn();
+            TaxPlateYear = new DataGridViewTextBoxColumn();
+            ActivityCertificateDate = new DataGridViewTextBoxColumn();
+            SignatureCircularDate = new DataGridViewTextBoxColumn();
+            CompanyOfficials = new DataGridViewTextBoxColumn();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 306);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1094, 274);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
+            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Location = new Point(12, 306);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(1094, 274);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 20);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1088, 251);
-            this.dataGridView1.TabIndex = 0;
-            
-            
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, TaxIdentificationNumber, CompanyName, TaxPlateYear, ActivityCertificateDate, SignatureCircularDate, CompanyOfficials });
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 20);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(1088, 251);
+            dataGridView1.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Firma İsmine Göre Arama :";
+            label1.AutoSize = true;
+            label1.Location = new Point(27, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(186, 18);
+            label1.TabIndex = 1;
+            label1.Text = "Firma İsmine Göre Arama :";
             // 
             // tbxSearch
             // 
-            this.tbxSearch.Location = new System.Drawing.Point(219, 14);
-            this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(566, 24);
-            this.tbxSearch.TabIndex = 1;
-           
+            tbxSearch.Location = new Point(219, 14);
+            tbxSearch.Name = "tbxSearch";
+            tbxSearch.Size = new Size(566, 24);
+            tbxSearch.TabIndex = 1;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(121, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 18);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "VKN :";
+            label2.AutoSize = true;
+            label2.Location = new Point(121, 69);
+            label2.Name = "label2";
+            label2.Size = new Size(46, 18);
+            label2.TabIndex = 3;
+            label2.Text = "VKN :";
             // 
             // mskVkn
             // 
-            this.mskVkn.Location = new System.Drawing.Point(173, 66);
-            this.mskVkn.Mask = "00000000000";
-            this.mskVkn.Name = "mskVkn";
-            this.mskVkn.Size = new System.Drawing.Size(153, 24);
-            this.mskVkn.TabIndex = 2;
-            this.mskVkn.ValidatingType = typeof(int);
+            mskVkn.Location = new Point(173, 66);
+            mskVkn.Mask = "00000000000";
+            mskVkn.Name = "mskVkn";
+            mskVkn.Size = new Size(153, 24);
+            mskVkn.TabIndex = 2;
+            mskVkn.ValidatingType = typeof(int);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(82, 99);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 18);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "FİRMA AD :";
+            label3.AutoSize = true;
+            label3.Location = new Point(82, 99);
+            label3.Name = "label3";
+            label3.Size = new Size(85, 18);
+            label3.TabIndex = 5;
+            label3.Text = "FİRMA AD :";
             // 
             // tbxAd
             // 
-            this.tbxAd.Location = new System.Drawing.Point(173, 96);
-            this.tbxAd.Name = "tbxAd";
-            this.tbxAd.Size = new System.Drawing.Size(153, 24);
-            this.tbxAd.TabIndex = 3;
+            tbxAd.Location = new Point(173, 96);
+            tbxAd.Name = "tbxAd";
+            tbxAd.Size = new Size(153, 24);
+            tbxAd.TabIndex = 3;
             // 
             // tbxVergiYili
             // 
-            this.tbxVergiYili.Location = new System.Drawing.Point(173, 126);
-            this.tbxVergiYili.Name = "tbxVergiYili";
-            this.tbxVergiYili.Size = new System.Drawing.Size(153, 24);
-            this.tbxVergiYili.TabIndex = 4;
+            tbxVergiYili.Location = new Point(173, 126);
+            tbxVergiYili.Name = "tbxVergiYili";
+            tbxVergiYili.Size = new Size(153, 24);
+            tbxVergiYili.TabIndex = 4;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 129);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(152, 18);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "VERGİ LEVHASI YILI :";
+            label4.AutoSize = true;
+            label4.Location = new Point(15, 129);
+            label4.Name = "label4";
+            label4.Size = new Size(152, 18);
+            label4.TabIndex = 7;
+            label4.Text = "VERGİ LEVHASI YILI :";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(351, 42);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(260, 18);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "FAALİYET BELGESİ ALINDIĞI TARİH :";
+            label5.AutoSize = true;
+            label5.Location = new Point(351, 42);
+            label5.Name = "label5";
+            label5.Size = new Size(260, 18);
+            label5.TabIndex = 9;
+            label5.Text = "FAALİYET BELGESİ ALINDIĞI TARİH :";
             // 
             // tbxİmzaSirkusuTarih
             // 
-            this.tbxİmzaSirkusuTarih.Location = new System.Drawing.Point(617, 69);
-            this.tbxİmzaSirkusuTarih.Name = "tbxİmzaSirkusuTarih";
-            this.tbxİmzaSirkusuTarih.Size = new System.Drawing.Size(153, 24);
-            this.tbxİmzaSirkusuTarih.TabIndex = 6;
+            tbxİmzaSirkusuTarih.Location = new Point(617, 69);
+            tbxİmzaSirkusuTarih.Name = "tbxİmzaSirkusuTarih";
+            tbxİmzaSirkusuTarih.Size = new Size(153, 24);
+            tbxİmzaSirkusuTarih.TabIndex = 6;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(373, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(238, 18);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "İMZA SİRKÜLERİ ALINMA TARİHİ :";
+            label6.AutoSize = true;
+            label6.Location = new Point(373, 72);
+            label6.Name = "label6";
+            label6.Size = new Size(238, 18);
+            label6.TabIndex = 11;
+            label6.Text = "İMZA SİRKÜLERİ ALINMA TARİHİ :";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(462, 102);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(149, 18);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "FİRMA YETKİLİLERİ :";
+            label7.AutoSize = true;
+            label7.Location = new Point(462, 102);
+            label7.Name = "label7";
+            label7.Size = new Size(149, 18);
+            label7.TabIndex = 13;
+            label7.Text = "FİRMA YETKİLİLERİ :";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnIletisim);
-            this.groupBox2.Controls.Add(this.pictureBox5);
-            this.groupBox2.Controls.Add(this.pictureBox4);
-            this.groupBox2.Controls.Add(this.pictureBox3);
-            this.groupBox2.Controls.Add(this.pictureBox2);
-            this.groupBox2.Controls.Add(this.btnTemizle);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.tbxId);
-            this.groupBox2.Controls.Add(this.btnGuncelle);
-            this.groupBox2.Controls.Add(this.btnSil);
-            this.groupBox2.Controls.Add(this.btnEkle);
-            this.groupBox2.Controls.Add(this.rtbxFirmaYetkili);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.mskVkn);
-            this.groupBox2.Controls.Add(this.tbxİmzaSirkusuTarih);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.tbxAd);
-            this.groupBox2.Controls.Add(this.tbxFaaliyetBelgesiTarih);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.tbxVergiYili);
-            this.groupBox2.Location = new System.Drawing.Point(15, 47);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(782, 253);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "MÜŞTERİ BİLGİLERİ";
+            groupBox2.Controls.Add(btnIletisim);
+            groupBox2.Controls.Add(pictureBox5);
+            groupBox2.Controls.Add(pictureBox4);
+            groupBox2.Controls.Add(pictureBox3);
+            groupBox2.Controls.Add(pictureBox2);
+            groupBox2.Controls.Add(btnTemizle);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Controls.Add(tbxId);
+            groupBox2.Controls.Add(btnGuncelle);
+            groupBox2.Controls.Add(btnSil);
+            groupBox2.Controls.Add(btnEkle);
+            groupBox2.Controls.Add(rtbxFirmaYetkili);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(mskVkn);
+            groupBox2.Controls.Add(tbxİmzaSirkusuTarih);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(tbxAd);
+            groupBox2.Controls.Add(tbxFaaliyetBelgesiTarih);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(tbxVergiYili);
+            groupBox2.Location = new Point(15, 47);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(782, 253);
+            groupBox2.TabIndex = 14;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "MÜŞTERİ BİLGİLERİ";
             // 
             // btnIletisim
             // 
-            this.btnIletisim.Location = new System.Drawing.Point(617, 214);
-            this.btnIletisim.Name = "btnIletisim";
-            this.btnIletisim.Size = new System.Drawing.Size(153, 33);
-            this.btnIletisim.TabIndex = 22;
-            this.btnIletisim.Text = "İLETİŞİM BİLGİLERİ";
-            this.btnIletisim.UseVisualStyleBackColor = true;
-            
+            btnIletisim.Location = new Point(617, 214);
+            btnIletisim.Name = "btnIletisim";
+            btnIletisim.Size = new Size(153, 33);
+            btnIletisim.TabIndex = 22;
+            btnIletisim.Text = "İLETİŞİM BİLGİLERİ";
+            btnIletisim.UseVisualStyleBackColor = true;
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(300, 203);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(48, 33);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 21;
-            this.pictureBox5.TabStop = false;
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(300, 203);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(48, 33);
+            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox5.TabIndex = 21;
+            pictureBox5.TabStop = false;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(300, 164);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(48, 33);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 20;
-            this.pictureBox4.TabStop = false;
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(300, 164);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(48, 33);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 20;
+            pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(98, 203);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(48, 33);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 19;
-            this.pictureBox3.TabStop = false;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(98, 203);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(48, 33);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 19;
+            pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(98, 164);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(48, 33);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 18;
-            this.pictureBox2.TabStop = false;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(98, 164);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(48, 33);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 18;
+            pictureBox2.TabStop = false;
             // 
             // btnTemizle
             // 
-            this.btnTemizle.Location = new System.Drawing.Point(354, 203);
-            this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(129, 33);
-            this.btnTemizle.TabIndex = 17;
-            this.btnTemizle.Text = "TEMİZLE";
-            this.btnTemizle.UseVisualStyleBackColor = true;
+            btnTemizle.Location = new Point(354, 203);
+            btnTemizle.Name = "btnTemizle";
+            btnTemizle.Size = new Size(129, 33);
+            btnTemizle.TabIndex = 17;
+            btnTemizle.Text = "TEMİZLE";
+            btnTemizle.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(57, 39);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 18);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "MÜŞTERİ NO :";
+            label8.AutoSize = true;
+            label8.Location = new Point(57, 39);
+            label8.Name = "label8";
+            label8.Size = new Size(110, 18);
+            label8.TabIndex = 15;
+            label8.Text = "MÜŞTERİ NO :";
             // 
             // tbxId
             // 
-            this.tbxId.Enabled = false;
-            this.tbxId.Location = new System.Drawing.Point(173, 36);
-            this.tbxId.Name = "tbxId";
-            this.tbxId.Size = new System.Drawing.Size(153, 24);
-            this.tbxId.TabIndex = 14;
+            tbxId.Enabled = false;
+            tbxId.Location = new Point(173, 36);
+            tbxId.Name = "tbxId";
+            tbxId.Size = new Size(153, 24);
+            tbxId.TabIndex = 14;
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Location = new System.Drawing.Point(152, 203);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(129, 33);
-            this.btnGuncelle.TabIndex = 10;
-            this.btnGuncelle.Text = "GÜNCELLE";
-            this.btnGuncelle.UseVisualStyleBackColor = true;
-            
+            btnGuncelle.Location = new Point(152, 203);
+            btnGuncelle.Name = "btnGuncelle";
+            btnGuncelle.Size = new Size(129, 33);
+            btnGuncelle.TabIndex = 10;
+            btnGuncelle.Text = "GÜNCELLE";
+            btnGuncelle.UseVisualStyleBackColor = true;
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(354, 164);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(129, 33);
-            this.btnSil.TabIndex = 9;
-            this.btnSil.Text = "SİL";
-            this.btnSil.UseVisualStyleBackColor = true;
-            
+            btnSil.Location = new Point(354, 164);
+            btnSil.Name = "btnSil";
+            btnSil.Size = new Size(129, 33);
+            btnSil.TabIndex = 9;
+            btnSil.Text = "SİL";
+            btnSil.UseVisualStyleBackColor = true;
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(152, 164);
-            this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(129, 33);
-            this.btnEkle.TabIndex = 8;
-            this.btnEkle.Text = "EKLE";
-            this.btnEkle.UseVisualStyleBackColor = true;
-
+            btnEkle.Location = new Point(152, 164);
+            btnEkle.Name = "btnEkle";
+            btnEkle.Size = new Size(129, 33);
+            btnEkle.TabIndex = 8;
+            btnEkle.Text = "EKLE";
+            btnEkle.UseVisualStyleBackColor = true;
             // 
             // rtbxFirmaYetkili
             // 
-            this.rtbxFirmaYetkili.Location = new System.Drawing.Point(617, 99);
-            this.rtbxFirmaYetkili.Name = "rtbxFirmaYetkili";
-            this.rtbxFirmaYetkili.Size = new System.Drawing.Size(153, 109);
-            this.rtbxFirmaYetkili.TabIndex = 7;
-            this.rtbxFirmaYetkili.Text = "";
+            rtbxFirmaYetkili.Location = new Point(617, 99);
+            rtbxFirmaYetkili.Name = "rtbxFirmaYetkili";
+            rtbxFirmaYetkili.Size = new Size(153, 109);
+            rtbxFirmaYetkili.TabIndex = 7;
+            rtbxFirmaYetkili.Text = "";
             // 
             // tbxFaaliyetBelgesiTarih
             // 
-            this.tbxFaaliyetBelgesiTarih.Location = new System.Drawing.Point(617, 39);
-            this.tbxFaaliyetBelgesiTarih.Name = "tbxFaaliyetBelgesiTarih";
-            this.tbxFaaliyetBelgesiTarih.Size = new System.Drawing.Size(153, 24);
-            this.tbxFaaliyetBelgesiTarih.TabIndex = 5;
+            tbxFaaliyetBelgesiTarih.Location = new Point(617, 39);
+            tbxFaaliyetBelgesiTarih.Name = "tbxFaaliyetBelgesiTarih";
+            tbxFaaliyetBelgesiTarih.Size = new Size(153, 24);
+            tbxFaaliyetBelgesiTarih.TabIndex = 5;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(821, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(282, 274);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(821, 26);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(282, 274);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Müşteri No";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // TaxIdentificationNumber
+            // 
+            TaxIdentificationNumber.DataPropertyName = "TaxIdentificationNumber";
+            TaxIdentificationNumber.HeaderText = "VERGİ KİMLİK NUMARASI";
+            TaxIdentificationNumber.Name = "TaxIdentificationNumber";
+            TaxIdentificationNumber.ReadOnly = true;
+            // 
+            // CompanyName
+            // 
+            CompanyName.DataPropertyName = "CompanyName";
+            CompanyName.HeaderText = "FİRMA AD";
+            CompanyName.Name = "CompanyName";
+            CompanyName.ReadOnly = true;
+            // 
+            // TaxPlateYear
+            // 
+            TaxPlateYear.DataPropertyName = "TaxPlateYear";
+            TaxPlateYear.HeaderText = "VERGİ LEVHASI YILI";
+            TaxPlateYear.Name = "TaxPlateYear";
+            TaxPlateYear.ReadOnly = true;
+            // 
+            // ActivityCertificateDate
+            // 
+            ActivityCertificateDate.DataPropertyName = "ActivityCertificateDate";
+            ActivityCertificateDate.HeaderText = "FAALİYET BELGESİ TARİHİ";
+            ActivityCertificateDate.Name = "ActivityCertificateDate";
+            ActivityCertificateDate.ReadOnly = true;
+            // 
+            // SignatureCircularDate
+            // 
+            SignatureCircularDate.DataPropertyName = "SignatureCircularDate";
+            SignatureCircularDate.HeaderText = "İMZA SİRKÜLER TARİHİ";
+            SignatureCircularDate.Name = "SignatureCircularDate";
+            SignatureCircularDate.ReadOnly = true;
+            // 
+            // CompanyOfficials
+            // 
+            CompanyOfficials.DataPropertyName = "CompanyOfficials";
+            CompanyOfficials.HeaderText = "FİRMA YETKİLİLERİ";
+            CompanyOfficials.Name = "CompanyOfficials";
+            CompanyOfficials.ReadOnly = true;
             // 
             // AnaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(1118, 592);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.tbxSearch);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
-            this.Name = "AnaForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Angün Döviz Ve Altın Ticaret A.Ş.  --- Desing By Mesut RÜZGAR";
-           
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(9F, 18F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = Color.CadetBlue;
+            ClientSize = new Size(1118, 592);
+            Controls.Add(pictureBox1);
+            Controls.Add(groupBox2);
+            Controls.Add(tbxSearch);
+            Controls.Add(label1);
+            Controls.Add(groupBox1);
+            Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4);
+            MaximizeBox = false;
+            Name = "AnaForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Angün Döviz Ve Altın Ticaret A.Ş.  --- Desing By Mesut RÜZGAR";
+            Load += AnaForm_Load;
+            groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -419,6 +468,13 @@ namespace EvrakTakipSistemi
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnIletisim;
         private System.Windows.Forms.TextBox tbxFaaliyetBelgesiTarih;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn TaxIdentificationNumber;
+        private DataGridViewTextBoxColumn CompanyName;
+        private DataGridViewTextBoxColumn TaxPlateYear;
+        private DataGridViewTextBoxColumn ActivityCertificateDate;
+        private DataGridViewTextBoxColumn SignatureCircularDate;
+        private DataGridViewTextBoxColumn CompanyOfficials;
     }
 }
 
