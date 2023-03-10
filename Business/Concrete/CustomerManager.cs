@@ -35,6 +35,11 @@ namespace Business.Concrete
             return  _customerDal.GetAll();
         }
 
+        public List<Customer> GetAll(int id)
+        {
+            return _customerDal.GetAll(c => c.Id == id);
+        }     
+
         public List<CustomerDTO> GetCustomerDto()
         {
             return _customerDal.GetCustomerDto();

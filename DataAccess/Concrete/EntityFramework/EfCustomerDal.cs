@@ -13,8 +13,9 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCustomerDal : EfEntityRepositoryBase<Customer, dbAngunContext>, ICustomerDal
     {
+     
 
-        List<CustomerDTO> ICustomerDal.GetCustomerDto()
+        public List<CustomerDTO> GetCustomerDto()
         {
             using (dbAngunContext context = new dbAngunContext())
             {
@@ -32,5 +33,7 @@ namespace DataAccess.Concrete.EntityFramework
                 return result.ToList();
             }
         }
+
+       
     }
 }

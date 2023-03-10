@@ -28,147 +28,146 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbxAd = new System.Windows.Forms.TextBox();
-            this.mskTel = new System.Windows.Forms.MaskedTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbxVKN = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbxId = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnGuncelle = new System.Windows.Forms.Button();
-            this.tbxEmail = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
+            label1 = new Label();
+            tbxAd = new TextBox();
+            mskTel = new MaskedTextBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            tbxId = new TextBox();
+            label5 = new Label();
+            btnGuncelle = new Button();
+            tbxEmail = new TextBox();
+            tbxVKN = new TextBox();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 53);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "VERGİ KİMLİK NO :";
+            label1.AutoSize = true;
+            label1.Location = new Point(8, 53);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(152, 20);
+            label1.TabIndex = 0;
+            label1.Text = "VERGİ KİMLİK NO :";
             // 
             // tbxAd
             // 
-            this.tbxAd.Enabled = false;
-            this.tbxAd.Location = new System.Drawing.Point(167, 82);
-            this.tbxAd.Name = "tbxAd";
-            this.tbxAd.Size = new System.Drawing.Size(240, 26);
-            this.tbxAd.TabIndex = 1;
+            tbxAd.Enabled = false;
+            tbxAd.Location = new Point(167, 82);
+            tbxAd.Name = "tbxAd";
+            tbxAd.Size = new Size(240, 26);
+            tbxAd.TabIndex = 1;
             // 
             // mskTel
             // 
-            this.mskTel.Location = new System.Drawing.Point(167, 114);
-            this.mskTel.Mask = "(999) 000-0000";
-            this.mskTel.Name = "mskTel";
-            this.mskTel.Size = new System.Drawing.Size(240, 26);
-            this.mskTel.TabIndex = 1;
+            mskTel.Location = new Point(167, 114);
+            mskTel.Mask = "(999) 000-0000";
+            mskTel.Name = "mskTel";
+            mskTel.Size = new Size(240, 26);
+            mskTel.TabIndex = 1;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 85);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "MÜŞTERİ AD :";
+            label2.AutoSize = true;
+            label2.Location = new Point(43, 85);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(117, 20);
+            label2.TabIndex = 6;
+            label2.Text = "MÜŞTERİ AD :";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(70, 117);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "TELEFON :";
-            // 
-            // tbxVKN
-            // 
-            this.tbxVKN.Enabled = false;
-            this.tbxVKN.Location = new System.Drawing.Point(167, 50);
-            this.tbxVKN.Name = "tbxVKN";
-            this.tbxVKN.Size = new System.Drawing.Size(240, 26);
-            this.tbxVKN.TabIndex = 8;
+            label3.AutoSize = true;
+            label3.Location = new Point(70, 117);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 20);
+            label3.TabIndex = 7;
+            label3.Text = "TELEFON :";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(78, 149);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 20);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "E-POSTA:";
+            label4.AutoSize = true;
+            label4.Location = new Point(78, 149);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(82, 20);
+            label4.TabIndex = 9;
+            label4.Text = "E-POSTA:";
             // 
             // tbxId
             // 
-            this.tbxId.Enabled = false;
-            this.tbxId.Location = new System.Drawing.Point(167, 18);
-            this.tbxId.Name = "tbxId";
-            this.tbxId.Size = new System.Drawing.Size(240, 26);
-            this.tbxId.TabIndex = 11;
+            tbxId.Enabled = false;
+            tbxId.Location = new Point(167, 18);
+            tbxId.Name = "tbxId";
+            tbxId.Size = new Size(240, 26);
+            tbxId.TabIndex = 11;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 21);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 20);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "MÜŞTERİ NO :";
+            label5.AutoSize = true;
+            label5.Location = new Point(43, 21);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(117, 20);
+            label5.TabIndex = 10;
+            label5.Text = "MÜŞTERİ NO :";
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGuncelle.Location = new System.Drawing.Point(167, 178);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(240, 31);
-            this.btnGuncelle.TabIndex = 4;
-            this.btnGuncelle.Text = "GÜNCELLE";
-            this.btnGuncelle.UseVisualStyleBackColor = true;
-            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
+            btnGuncelle.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnGuncelle.Location = new Point(167, 178);
+            btnGuncelle.Name = "btnGuncelle";
+            btnGuncelle.Size = new Size(240, 31);
+            btnGuncelle.TabIndex = 4;
+            btnGuncelle.Text = "GÜNCELLE";
+            btnGuncelle.UseVisualStyleBackColor = true;
+            btnGuncelle.Click += btnGuncelle_Click;
             // 
             // tbxEmail
             // 
-            this.tbxEmail.Location = new System.Drawing.Point(167, 146);
-            this.tbxEmail.Name = "tbxEmail";
-            this.tbxEmail.Size = new System.Drawing.Size(240, 26);
-            this.tbxEmail.TabIndex = 12;
+            tbxEmail.Location = new Point(167, 146);
+            tbxEmail.Name = "tbxEmail";
+            tbxEmail.Size = new Size(240, 26);
+            tbxEmail.TabIndex = 12;
+            // 
+            // tbxVKN
+            // 
+            tbxVKN.Enabled = false;
+            tbxVKN.Location = new Point(167, 50);
+            tbxVKN.Name = "tbxVKN";
+            tbxVKN.Size = new Size(240, 26);
+            tbxVKN.TabIndex = 8;
             // 
             // IletisimFormu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(436, 220);
-            this.Controls.Add(this.tbxEmail);
-            this.Controls.Add(this.btnGuncelle);
-            this.Controls.Add(this.tbxId);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.tbxVKN);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.mskTel);
-            this.Controls.Add(this.tbxAd);
-            this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
-            this.Name = "IletisimFormu";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Müşteri İletişim Formu";
-            this.Load += new System.EventHandler(this.IletisimFormu_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = Color.CadetBlue;
+            ClientSize = new Size(436, 220);
+            Controls.Add(tbxEmail);
+            Controls.Add(btnGuncelle);
+            Controls.Add(tbxId);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(tbxVKN);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(mskTel);
+            Controls.Add(tbxAd);
+            Controls.Add(label1);
+            Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4);
+            MaximizeBox = false;
+            Name = "IletisimFormu";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Müşteri İletişim Formu";
+            Load += IletisimFormu_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -178,11 +177,11 @@
         private System.Windows.Forms.MaskedTextBox mskTel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbxVKN;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbxId;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnGuncelle;
         private System.Windows.Forms.TextBox tbxEmail;
+        private TextBox tbxVKN;
     }
 }

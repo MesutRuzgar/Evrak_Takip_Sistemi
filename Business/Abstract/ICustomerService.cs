@@ -11,7 +11,9 @@ namespace Business.Abstract
     public interface ICustomerService
     {
         List<Customer> GetAll();
+        List<Customer> GetAll(int id);
         List<CustomerDTO> GetCustomerDto();
+      
         void Add(Customer customer);
         void Update(Customer customer);
         void Delete(Customer customer);
