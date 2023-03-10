@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,12 @@ namespace Business.Concrete
 
         public void Add(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Add(customer);
         }
 
         public void Delete(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Delete(customer);
         }
 
         public List<Customer> GetAll()
@@ -34,9 +35,14 @@ namespace Business.Concrete
             return  _customerDal.GetAll();
         }
 
+        public List<CustomerDTO> GetCustomerDto()
+        {
+            return _customerDal.GetCustomerDto();
+        }
+
         public void Update(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Update(customer);
         }
     }
 }
