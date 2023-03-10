@@ -136,15 +136,8 @@ namespace EvrakTakipSistemi
                         customer.TaxIdentificationNumber = mskVkn.Text;
                         customer.CompanyName = tbxAd.Text;
                         customer.TaxPlateYear = tbxVergiYili.Text;
-                        if (!string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text))
-                        {
-                            customer.ActivityCertificateDate = DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
-                        }
-
-                        if (!string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text))
-                        {
-                            customer.SignatureCircularDate = DateTime.Parse(tbxImzaSirkusuTarih.Text);
-                        }
+                        customer.ActivityCertificateDate = string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text) ? null : DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
+                        customer.SignatureCircularDate = string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text) ? null : DateTime.Parse(tbxImzaSirkusuTarih.Text);
                         customer.CompanyOfficials = rtbxFirmaYetkili.Text;
                         customerManager.Update(customer);
                         MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -220,17 +213,8 @@ namespace EvrakTakipSistemi
                 }
 
                 customer.TaxPlateYear = tbxVergiYili.Text;
-
-                if (!string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text))
-                {
-                    customer.ActivityCertificateDate = DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
-                }
-
-                if (!string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text))
-                {
-                    customer.SignatureCircularDate = DateTime.Parse(tbxImzaSirkusuTarih.Text);
-                }
-
+                customer.ActivityCertificateDate = string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text) ? null : DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
+                customer.SignatureCircularDate = string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text) ? null : DateTime.Parse(tbxImzaSirkusuTarih.Text);
                 customer.CompanyOfficials = rtbxFirmaYetkili.Text;
                 customerManager.Add(customer);
                 MessageBox.Show("Ekleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);

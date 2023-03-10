@@ -26,7 +26,7 @@ namespace EvrakTakipSistemi
         }
         public string id;
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-
+        dbAngunContext db = new dbAngunContext();
 
 
         private void IletisimFormu_Load(object sender, EventArgs e)
@@ -37,10 +37,10 @@ namespace EvrakTakipSistemi
             {
                 foreach (var customers in customer)
                 {
-                     tbxVKN.Text =customers.TaxIdentificationNumber ;
-                    tbxAd.Text = customers.CompanyName ;
-                    mskTel.Text = customers.Phone ;
-                    tbxEmail.Text = customers.Email ;
+                    tbxVKN.Text = customers.TaxIdentificationNumber;
+                    tbxAd.Text = customers.CompanyName;
+                    mskTel.Text = customers.Phone;
+                    tbxEmail.Text = customers.Email;
                 }
 
             }
@@ -50,8 +50,24 @@ namespace EvrakTakipSistemi
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int id = int.Parse(tbxId.Text);
+                var customer = db.Customers.Find(id);
+                customer.Phone = mskTel.Text;
+                customer.Email = tbxEmail.Text;
+                customerManager.Update(customer);
+                MessageBox.Show("İletişim bilgileri güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            }
+            catch 
+            {
 
+                MessageBox.Show("İletişim bilgileri güncellenirken bir hata oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
+        
         }
     }
 }
