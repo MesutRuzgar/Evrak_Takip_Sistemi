@@ -47,6 +47,11 @@ namespace Business.Concrete
             return _customerDal.GetCustomerDto();
         }
 
+        public List<CustomerDTO> GetCustomerDto(string filter)
+        {
+            return _customerDal.GetCustomerDto(c=>c.CompanyName.Contains(filter));
+        }
+
         public void Update(Customer customer)
         {
             _customerDal.Update(customer);

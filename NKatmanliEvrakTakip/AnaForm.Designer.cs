@@ -162,6 +162,7 @@ namespace EvrakTakipSistemi
             tbxSearch.Name = "tbxSearch";
             tbxSearch.Size = new Size(566, 24);
             tbxSearch.TabIndex = 1;
+            tbxSearch.TextChanged += tbxSearch_TextChanged;
             // 
             // label2
             // 

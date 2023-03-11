@@ -30,7 +30,7 @@ namespace EvrakTakipSistemi
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
         dbAngunContext db = new dbAngunContext();
         CustomerValidator validator = new CustomerValidator();
-       
+
 
         private void AnaForm_Load(object sender, EventArgs e)
         {
@@ -61,7 +61,7 @@ namespace EvrakTakipSistemi
                 MessageBox.Show("Geçersiz işlem!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-                
+
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
@@ -140,7 +140,7 @@ namespace EvrakTakipSistemi
 
         }
 
-    
+
         private void btnEkle_Click(object sender, EventArgs e)
         {
             try
@@ -152,7 +152,7 @@ namespace EvrakTakipSistemi
                 customer.ActivityCertificateDate = string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text) ? null : DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
                 customer.SignatureCircularDate = string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text) ? null : DateTime.Parse(tbxImzaSirkusuTarih.Text);
                 customer.CompanyOfficials = rtbxFirmaYetkili.Text;
-                
+
 
                 // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
 
@@ -210,6 +210,13 @@ namespace EvrakTakipSistemi
                 frm.Show();
             }
         }
+
+        private void tbxSearch_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource= customerManager.GetCustomerDto(tbxSearch.Text);
+            Gecerlimi();
+        }
+
         //METHODS
         private void ClearForm()
         {
@@ -274,6 +281,8 @@ namespace EvrakTakipSistemi
                 }
             }
         }
+
+       
     }
 
 }

@@ -15,7 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
      
 
-        public List<CustomerDTO> GetCustomerDto()
+        public List<CustomerDTO> GetCustomerDto(Expression<Func<CustomerDTO, bool>> filter = null)
         {
             using (dbAngunContext context = new dbAngunContext())
             {
@@ -30,7 +30,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  SignatureCircularDate = c.SignatureCircularDate,
                                  CompanyOfficials = c.CompanyOfficials,
                              };
-                return result.ToList();
+                return filter is null ? result.ToList() : result.Where(filter).ToList();
             }
         }
 

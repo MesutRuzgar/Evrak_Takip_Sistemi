@@ -13,7 +13,8 @@ namespace Business.Abstract
         List<Customer> GetAll();
         List<Customer> GetAll(int id);
         List<CustomerDTO> GetCustomerDto();
-      
+        List<CustomerDTO> GetCustomerDto(string filter);
+
         void Add(Customer customer);
         void Update(Customer customer);
         void Delete(Customer customer);
