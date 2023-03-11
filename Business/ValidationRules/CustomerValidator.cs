@@ -20,7 +20,6 @@ namespace Business.Validation
             RuleFor(x => x.ActivityCertificateDate).LessThanOrEqualTo(DateTime.Now.Date)
             .WithMessage("Faaliyet belgesi tarihi bugünün tarihinden büyük olamaz.\nLütfen faaliyet belgenizin alındığı tarihi girdiğinizden emin olunuz!");
 
-
             //Vergi levhası yılı bir yıl geriden geldiği için en fazla günümüzün 1 yıl öncesi olacak şekilde kural düzenlendi
             //Cascade(CascadeMode.StopOnFirstFailure) bize kademeli olarak doğrulama sağlıyor bu sayede
             //2 hata mesajını aynı anda göstermek yerine aşamalı olarka kontrol edil o aşamaya göre

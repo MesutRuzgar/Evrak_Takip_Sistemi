@@ -50,8 +50,8 @@ namespace EvrakTakipSistemi
                 mskVkn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 tbxAd.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 tbxVergiYili.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString();
-                tbxFaaliyetBelgesiTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString(), out DateTime dateFaaliyet) ? dateFaaliyet.ToShortDateString() : "";
-                tbxImzaSirkusuTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString(), out DateTime dateImza) ? dateImza.ToShortDateString() : "";
+                tbxFaaliyetBelgesiTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString(), out DateTime dateFaaliyet) ? dateFaaliyet.ToString("dd/MM/yyyy") : "";
+                tbxImzaSirkusuTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString(), out DateTime dateImza) ? dateImza.ToString("dd/MM/yyyy") : "";
                 rtbxFirmaYetkili.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value?.ToString();
             }
             catch
@@ -70,30 +70,30 @@ namespace EvrakTakipSistemi
                 {
                     int id = int.Parse(tbxId.Text);
                     var customer = db.Customers.Find(id);
-                   
-                        customer.TaxIdentificationNumber = mskVkn.Text;
-                        customer.CompanyName = tbxAd.Text;
-                        customer.TaxPlateYear = tbxVergiYili.Text;
-                        customer.ActivityCertificateDate = string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text) ? null : DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
-                        customer.SignatureCircularDate = string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text) ? null : DateTime.Parse(tbxImzaSirkusuTarih.Text);
-                        customer.CompanyOfficials = rtbxFirmaYetkili.Text;
 
-                        // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
-                        var validationResult = validator.Validate(customer);
-                        if (validationResult.IsValid)
-                        {
-                            customerManager.Update(customer);
-                            MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            FillCustomerTable();
-                            ClearForm();
-                        }
-                        else
-                        {
-                            // Hata mesajlarını gösteriyoruz.
-                            string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
-                            MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                   
+                    customer.TaxIdentificationNumber = mskVkn.Text;
+                    customer.CompanyName = tbxAd.Text;
+                    customer.TaxPlateYear = tbxVergiYili.Text;
+                    customer.ActivityCertificateDate = string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text) ? null : DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
+                    customer.SignatureCircularDate = string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text) ? null : DateTime.Parse(tbxImzaSirkusuTarih.Text);
+                    customer.CompanyOfficials = rtbxFirmaYetkili.Text;
+
+                    // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
+                    var validationResult = validator.Validate(customer);
+                    if (validationResult.IsValid)
+                    {
+                        customerManager.Update(customer);
+                        MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FillCustomerTable();
+                        ClearForm();
+                    }
+                    else
+                    {
+                        // Hata mesajlarını gösteriyoruz.
+                        string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
+                        MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else
                 {

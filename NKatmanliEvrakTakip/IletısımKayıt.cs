@@ -19,10 +19,10 @@ namespace EvrakTakipSistemi
             InitializeComponent();
         }
 
-       
+
         CommunicationValidator validator = new CommunicationValidator();
-     
-        
+
+
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             try
@@ -41,22 +41,22 @@ namespace EvrakTakipSistemi
                     this.Close();
 
                 }
-                else 
+                else
                 {
                     string errorMessage = string.Join("\n", result.Errors.Select(error => error.ErrorMessage));
                     MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                             
+
 
             }
-            catch 
+            catch
             {
-           
+
                 MessageBox.Show("İletişim bilgileri kaydedilirken bir hata oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
-       
+
     }
 }

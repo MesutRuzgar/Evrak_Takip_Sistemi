@@ -64,8 +64,8 @@ namespace EvrakTakipSistemi
             btnSil = new Button();
             btnEkle = new Button();
             rtbxFirmaYetkili = new RichTextBox();
-            tbxFaaliyetBelgesiTarih = new TextBox();
             pictureBox1 = new PictureBox();
+            tbxFaaliyetBelgesiTarih = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
@@ -250,6 +250,7 @@ namespace EvrakTakipSistemi
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(tbxFaaliyetBelgesiTarih);
             groupBox2.Controls.Add(btnIletisim);
             groupBox2.Controls.Add(pictureBox5);
             groupBox2.Controls.Add(pictureBox4);
@@ -269,7 +270,6 @@ namespace EvrakTakipSistemi
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(tbxAd);
-            groupBox2.Controls.Add(tbxFaaliyetBelgesiTarih);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(tbxVergiYili);
@@ -285,7 +285,7 @@ namespace EvrakTakipSistemi
             btnIletisim.Location = new Point(617, 214);
             btnIletisim.Name = "btnIletisim";
             btnIletisim.Size = new Size(153, 33);
-            btnIletisim.TabIndex = 22;
+            btnIletisim.TabIndex = 12;
             btnIletisim.Text = "İLETİŞİM BİLGİLERİ";
             btnIletisim.UseVisualStyleBackColor = true;
             btnIletisim.Click += btnIletisim_Click;
@@ -335,7 +335,7 @@ namespace EvrakTakipSistemi
             btnTemizle.Location = new Point(354, 203);
             btnTemizle.Name = "btnTemizle";
             btnTemizle.Size = new Size(129, 33);
-            btnTemizle.TabIndex = 17;
+            btnTemizle.TabIndex = 11;
             btnTemizle.Text = "TEMİZLE";
             btnTemizle.UseVisualStyleBackColor = true;
             btnTemizle.Click += btnTemizle_Click;
@@ -395,13 +395,6 @@ namespace EvrakTakipSistemi
             rtbxFirmaYetkili.TabIndex = 7;
             rtbxFirmaYetkili.Text = "";
             // 
-            // tbxFaaliyetBelgesiTarih
-            // 
-            tbxFaaliyetBelgesiTarih.Location = new Point(617, 39);
-            tbxFaaliyetBelgesiTarih.Name = "tbxFaaliyetBelgesiTarih";
-            tbxFaaliyetBelgesiTarih.Size = new Size(153, 24);
-            tbxFaaliyetBelgesiTarih.TabIndex = 5;
-            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -411,6 +404,13 @@ namespace EvrakTakipSistemi
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 15;
             pictureBox1.TabStop = false;
+            // 
+            // tbxFaaliyetBelgesiTarih
+            // 
+            tbxFaaliyetBelgesiTarih.Location = new Point(617, 39);
+            tbxFaaliyetBelgesiTarih.Name = "tbxFaaliyetBelgesiTarih";
+            tbxFaaliyetBelgesiTarih.Size = new Size(153, 24);
+            tbxFaaliyetBelgesiTarih.TabIndex = 5;
             // 
             // AnaForm
             // 
@@ -474,7 +474,6 @@ namespace EvrakTakipSistemi
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnIletisim;
-        private System.Windows.Forms.TextBox tbxFaaliyetBelgesiTarih;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn TaxIdentificationNumber;
         private new DataGridViewTextBoxColumn CompanyName;
@@ -482,6 +481,7 @@ namespace EvrakTakipSistemi
         private DataGridViewTextBoxColumn ActivityCertificateDate;
         private DataGridViewTextBoxColumn SignatureCircularDate;
         private DataGridViewTextBoxColumn CompanyOfficials;
+        private TextBox tbxFaaliyetBelgesiTarih;
     }
 }
 
