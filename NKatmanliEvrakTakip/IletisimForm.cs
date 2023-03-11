@@ -62,7 +62,7 @@ namespace EvrakTakipSistemi
 
                 var validationResult = validator.Validate(customer);
 
-                // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
+                    // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
                 if (validationResult.IsValid)
                 {
                     customerManager.Update(customer);
@@ -70,7 +70,7 @@ namespace EvrakTakipSistemi
                 }
                 else
                 {
-                //Hata mesajlarını gösteriyoruz.
+                    //Hata mesajlarını gösteriyoruz.
                     string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
                     MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
