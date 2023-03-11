@@ -52,7 +52,6 @@ namespace EvrakTakipSistemi
                 tbxVergiYili.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString();
                 tbxFaaliyetBelgesiTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString(), out DateTime dateFaaliyet) ? dateFaaliyet.ToShortDateString() : "";
                 tbxImzaSirkusuTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString(), out DateTime dateImza) ? dateImza.ToShortDateString() : "";
-
                 rtbxFirmaYetkili.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value?.ToString();
             }
             catch
@@ -71,17 +70,16 @@ namespace EvrakTakipSistemi
                 {
                     int id = int.Parse(tbxId.Text);
                     var customer = db.Customers.Find(id);
-                    if (customer != null)
-                    {
+                   
                         customer.TaxIdentificationNumber = mskVkn.Text;
                         customer.CompanyName = tbxAd.Text;
                         customer.TaxPlateYear = tbxVergiYili.Text;
                         customer.ActivityCertificateDate = string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text) ? null : DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
                         customer.SignatureCircularDate = string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text) ? null : DateTime.Parse(tbxImzaSirkusuTarih.Text);
                         customer.CompanyOfficials = rtbxFirmaYetkili.Text;
-                        var validationResult = validator.Validate(customer);
 
                         // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
+                        var validationResult = validator.Validate(customer);
                         if (validationResult.IsValid)
                         {
                             customerManager.Update(customer);
@@ -95,7 +93,7 @@ namespace EvrakTakipSistemi
                             string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
                             MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
+                   
                 }
                 else
                 {
@@ -119,13 +117,11 @@ namespace EvrakTakipSistemi
                 {
                     int id = int.Parse(tbxId.Text);
                     var customer = db.Customers.Find(id);
-                    if (customer != null)
-                    {
-                        customerManager.Delete(customer);
-                        MessageBox.Show("Silme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FillCustomerTable();
-                        ClearForm();
-                    }
+                    customerManager.Delete(customer);
+                    MessageBox.Show("Silme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FillCustomerTable();
+                    ClearForm();
+
                 }
                 else
                 {
@@ -213,7 +209,7 @@ namespace EvrakTakipSistemi
 
         private void tbxSearch_TextChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource= customerManager.GetCustomerDto(tbxSearch.Text);
+            dataGridView1.DataSource = customerManager.GetCustomerDto(tbxSearch.Text);
             Gecerlimi();
         }
 
@@ -282,7 +278,7 @@ namespace EvrakTakipSistemi
             }
         }
 
-       
+
     }
 
 }
