@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.ValidationRules;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,15 +17,17 @@ namespace EvrakTakipSistemi
         {
             InitializeComponent();
         }
+        CommunicationValidator validator = new CommunicationValidator();
      
         
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             try
             {
-                AnaForm anaForm = new AnaForm();
+                
                 AnaForm.tel=this.mskTelefon.Text;
                 AnaForm.email = this.tbxEmail.Text;
+
 
                 
                 DialogResult = DialogResult.OK;

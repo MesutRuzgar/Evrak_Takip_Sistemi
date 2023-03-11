@@ -13,6 +13,7 @@ using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using FluentValidation;
 using Business.Validation;
+using Business.ValidationRules;
 
 namespace EvrakTakipSistemi
 {
@@ -29,7 +30,7 @@ namespace EvrakTakipSistemi
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
         dbAngunContext db = new dbAngunContext();
         CustomerValidator validator = new CustomerValidator();
-
+       
 
         private void AnaForm_Load(object sender, EventArgs e)
         {
@@ -78,10 +79,22 @@ namespace EvrakTakipSistemi
                         customer.ActivityCertificateDate = string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text) ? null : DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
                         customer.SignatureCircularDate = string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text) ? null : DateTime.Parse(tbxImzaSirkusuTarih.Text);
                         customer.CompanyOfficials = rtbxFirmaYetkili.Text;
-                        customerManager.Update(customer);
-                        MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FillCustomerTable();
-                        ClearForm();
+                        var validationResult = validator.Validate(customer);
+
+                        // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
+                        if (validationResult.IsValid)
+                        {
+                            customerManager.Update(customer);
+                            MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            FillCustomerTable();
+                            ClearForm();
+                        }
+                        else
+                        {
+                            // Hata mesajlarını gösteriyoruz.
+                            string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
+                            MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 else

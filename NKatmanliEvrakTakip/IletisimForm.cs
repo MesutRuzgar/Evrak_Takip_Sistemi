@@ -15,6 +15,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System.ComponentModel.DataAnnotations;
 using Business.Validation;
+using Business.ValidationRules;
 
 namespace EvrakTakipSistemi
 {
@@ -29,7 +30,7 @@ namespace EvrakTakipSistemi
         public string id;
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
         dbAngunContext db = new dbAngunContext();
-        CustomerValidator validator = new CustomerValidator();
+        CommunicationValidator validator = new CommunicationValidator();
 
         private void IletisimFormu_Load(object sender, EventArgs e)
         {
@@ -61,6 +62,7 @@ namespace EvrakTakipSistemi
 
                 var validationResult = validator.Validate(customer);
 
+                // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
                 if (validationResult.IsValid)
                 {
                     customerManager.Update(customer);
@@ -68,7 +70,7 @@ namespace EvrakTakipSistemi
                 }
                 else
                 {
-                
+                //Hata mesajlarını gösteriyoruz.
                     string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
                     MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
