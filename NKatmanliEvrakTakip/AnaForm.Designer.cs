@@ -48,10 +48,10 @@ namespace EvrakTakipSistemi
             tbxVergiYili = new TextBox();
             label4 = new Label();
             label5 = new Label();
-            tbxImzaSirkusuTarih = new TextBox();
             label6 = new Label();
             label7 = new Label();
             groupBox2 = new GroupBox();
+            mskFaaliyet = new MaskedTextBox();
             btnIletisim = new Button();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
@@ -65,7 +65,7 @@ namespace EvrakTakipSistemi
             btnEkle = new Button();
             rtbxFirmaYetkili = new RichTextBox();
             pictureBox1 = new PictureBox();
-            tbxFaaliyetBelgesiTarih = new TextBox();
+            mskImza = new MaskedTextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
@@ -223,13 +223,6 @@ namespace EvrakTakipSistemi
             label5.TabIndex = 9;
             label5.Text = "FAALİYET BELGESİ ALINDIĞI TARİH :";
             // 
-            // tbxImzaSirkusuTarih
-            // 
-            tbxImzaSirkusuTarih.Location = new Point(617, 69);
-            tbxImzaSirkusuTarih.Name = "tbxImzaSirkusuTarih";
-            tbxImzaSirkusuTarih.Size = new Size(153, 24);
-            tbxImzaSirkusuTarih.TabIndex = 6;
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -250,7 +243,8 @@ namespace EvrakTakipSistemi
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(tbxFaaliyetBelgesiTarih);
+            groupBox2.Controls.Add(mskImza);
+            groupBox2.Controls.Add(mskFaaliyet);
             groupBox2.Controls.Add(btnIletisim);
             groupBox2.Controls.Add(pictureBox5);
             groupBox2.Controls.Add(pictureBox4);
@@ -266,7 +260,6 @@ namespace EvrakTakipSistemi
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(mskVkn);
-            groupBox2.Controls.Add(tbxImzaSirkusuTarih);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(tbxAd);
@@ -279,6 +272,15 @@ namespace EvrakTakipSistemi
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
             groupBox2.Text = "MÜŞTERİ BİLGİLERİ";
+            // 
+            // mskFaaliyet
+            // 
+            mskFaaliyet.Location = new Point(617, 36);
+            mskFaaliyet.Mask = "00/00/0000";
+            mskFaaliyet.Name = "mskFaaliyet";
+            mskFaaliyet.Size = new Size(153, 24);
+            mskFaaliyet.TabIndex = 24;
+            mskFaaliyet.ValidatingType = typeof(DateTime);
             // 
             // btnIletisim
             // 
@@ -405,12 +407,14 @@ namespace EvrakTakipSistemi
             pictureBox1.TabIndex = 15;
             pictureBox1.TabStop = false;
             // 
-            // tbxFaaliyetBelgesiTarih
+            // mskImza
             // 
-            tbxFaaliyetBelgesiTarih.Location = new Point(617, 39);
-            tbxFaaliyetBelgesiTarih.Name = "tbxFaaliyetBelgesiTarih";
-            tbxFaaliyetBelgesiTarih.Size = new Size(153, 24);
-            tbxFaaliyetBelgesiTarih.TabIndex = 5;
+            mskImza.Location = new Point(617, 69);
+            mskImza.Mask = "00/00/0000";
+            mskImza.Name = "mskImza";
+            mskImza.Size = new Size(153, 24);
+            mskImza.TabIndex = 25;
+            mskImza.ValidatingType = typeof(DateTime);
             // 
             // AnaForm
             // 
@@ -457,7 +461,6 @@ namespace EvrakTakipSistemi
         private System.Windows.Forms.TextBox tbxVergiYili;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbxImzaSirkusuTarih;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -481,7 +484,10 @@ namespace EvrakTakipSistemi
         private DataGridViewTextBoxColumn ActivityCertificateDate;
         private DataGridViewTextBoxColumn SignatureCircularDate;
         private DataGridViewTextBoxColumn CompanyOfficials;
-        private TextBox tbxFaaliyetBelgesiTarih;
+        private DateTimePicker dtpFaaliyet;
+        private DateTimePicker dtpImza;
+        private MaskedTextBox mskFaaliyet;
+        private MaskedTextBox mskImza;
     }
 }
 

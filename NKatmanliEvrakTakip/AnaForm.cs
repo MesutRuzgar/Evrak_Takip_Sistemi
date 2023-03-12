@@ -35,11 +35,15 @@ namespace EvrakTakipSistemi
         private void AnaForm_Load(object sender, EventArgs e)
         {
             FillCustomerTable();
+           
         }
+
+       
 
         private void btnTemizle_Click(object sender, EventArgs e)
         {
             ClearForm();
+           
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -50,8 +54,10 @@ namespace EvrakTakipSistemi
                 mskVkn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 tbxAd.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 tbxVergiYili.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString();
-                tbxFaaliyetBelgesiTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString(), out DateTime dateFaaliyet) ? dateFaaliyet.ToString("dd/MM/yyyy") : "";
-                tbxImzaSirkusuTarih.Text = DateTime.TryParse(dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString(), out DateTime dateImza) ? dateImza.ToString("dd/MM/yyyy") : "";
+                object faaliyetValue = dataGridView1.Rows[e.RowIndex].Cells[4].Value;
+                mskFaaliyet.Text = faaliyetValue != null ? ((DateTime)faaliyetValue).ToString("dd/MM/yyyy") : "";
+                object imzaValue = dataGridView1.Rows[e.RowIndex].Cells[5].Value;
+                mskImza.Text = imzaValue != null ? ((DateTime)imzaValue).ToString("dd/MM/yyyy") : "";
                 rtbxFirmaYetkili.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value?.ToString();
             }
             catch
@@ -64,8 +70,10 @@ namespace EvrakTakipSistemi
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
+
             try
             {
+
                 if (!string.IsNullOrEmpty(tbxId.Text))
                 {
                     int id = int.Parse(tbxId.Text);
@@ -74,8 +82,10 @@ namespace EvrakTakipSistemi
                     customer.TaxIdentificationNumber = mskVkn.Text;
                     customer.CompanyName = tbxAd.Text;
                     customer.TaxPlateYear = tbxVergiYili.Text;
-                    customer.ActivityCertificateDate = string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text) ? null : DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
-                    customer.SignatureCircularDate = string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text) ? null : DateTime.Parse(tbxImzaSirkusuTarih.Text);
+                    customer.ActivityCertificateDate = DateTime.TryParse(mskFaaliyet.Text, out DateTime faaliyet) ? faaliyet : null;
+                    customer.SignatureCircularDate = DateTime.TryParse(mskImza.Text, out DateTime imza) ? imza : null;
+                    //customer.ActivityCertificateDate = DateTime.TryParse(dtpFaaliyet.Text, out DateTime activityCertificateDate) ? activityCertificateDate : (DateTime?)null;
+                    //customer.SignatureCircularDate = DateTime.TryParse(dtpImza.Text, out DateTime signatureCircularDate) ? signatureCircularDate : (DateTime?)null;
                     customer.CompanyOfficials = rtbxFirmaYetkili.Text;
 
                     // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
@@ -86,27 +96,31 @@ namespace EvrakTakipSistemi
                         MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         FillCustomerTable();
                         ClearForm();
+                
                     }
                     else
                     {
                         // Hata mesajlarını gösteriyoruz.
                         string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
                         MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
 
+
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Lütfen bir müşteri seçiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+
             }
-            catch
+            catch (Exception ex)
             {
 
                 MessageBox.Show("Güncelleme işlemi sırasında bir hata oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
+
 
         private void btnSil_Click(object sender, EventArgs e)
         {
@@ -145,8 +159,8 @@ namespace EvrakTakipSistemi
                 customer.TaxIdentificationNumber = mskVkn.Text;
                 customer.CompanyName = tbxAd.Text;
                 customer.TaxPlateYear = tbxVergiYili.Text;
-                customer.ActivityCertificateDate = string.IsNullOrEmpty(tbxFaaliyetBelgesiTarih.Text) ? null : DateTime.Parse(tbxFaaliyetBelgesiTarih.Text);
-                customer.SignatureCircularDate = string.IsNullOrEmpty(tbxImzaSirkusuTarih.Text) ? null : DateTime.Parse(tbxImzaSirkusuTarih.Text);
+                customer.ActivityCertificateDate = string.IsNullOrEmpty(mskFaaliyet.Text) ? null : DateTime.Parse(mskFaaliyet.Text);
+                customer.SignatureCircularDate = string.IsNullOrEmpty(mskImza.Text) ? null : DateTime.Parse(mskImza.Text);
                 customer.CompanyOfficials = rtbxFirmaYetkili.Text;
 
 
@@ -220,8 +234,8 @@ namespace EvrakTakipSistemi
             mskVkn.Text = string.Empty;
             tbxAd.Text = string.Empty;
             tbxVergiYili.Text = string.Empty;
-            tbxFaaliyetBelgesiTarih.Text = string.Empty;
-            tbxImzaSirkusuTarih.Text = string.Empty;
+            mskFaaliyet.Text = string.Empty;
+            mskImza.Text = string.Empty;
             rtbxFirmaYetkili.Text = string.Empty;
         }
         private void FillCustomerTable()
@@ -278,7 +292,7 @@ namespace EvrakTakipSistemi
             }
         }
 
-
+      
     }
 
 }
