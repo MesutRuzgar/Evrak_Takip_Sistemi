@@ -13,7 +13,7 @@ namespace Business.Validation
     {
         public CustomerValidator()
         {
-            RuleFor(x => x.CompanyName).NotNull().NotEmpty().WithMessage("Firma İsmi Boş Olamaz!");
+            RuleFor(x => x.CompanyName).NotNull().NotEmpty().WithMessage("Firma ismi boş olamaz!");
             RuleFor(x => x.TaxIdentificationNumber).MinimumLength(10).WithMessage("Lütfen geçerli VKN giriniz!");
 
             //Faaliyet belgesi tarihi bugüne eşit veya  küçük olması gerekir
@@ -25,6 +25,12 @@ namespace Business.Validation
             //2 hata mesajını aynı anda göstermek yerine aşamalı olarka kontrol edil o aşamaya göre
             //hata mesajı veriyor
             RuleFor(x => x.TaxPlateYear).Cascade(CascadeMode.StopOnFirstFailure).Must(yil => string.IsNullOrEmpty(yil) || int.TryParse(yil, out int yilSayisi)).WithMessage("Lütfen sadece sayı giriniz.").Must(yil => string.IsNullOrEmpty(yil) || (int.TryParse(yil, out int yilSayisi) && yilSayisi <= DateTime.Now.Year - 1)).WithMessage("Vergi levhası yılı, bugünkü yılın bir önceki yılına eşit veya küçük olabilir.");
+
+            RuleFor(x => x.TaxPlateYear).MinimumLength(4).GreaterThan("1900").WithMessage("Vergi levhası yılını doğru girdiğinizden emin olunuz.").When(x => !string.IsNullOrEmpty(x.TaxPlateYear));
+            RuleFor(x => x.ActivityCertificateDate).GreaterThanOrEqualTo(new DateTime(1900, 1, 1)).WithMessage("Faaliyet belgesi tarihi doğru girdiğinizden emin olunuz.");
+            RuleFor(x => x.SignatureCircularDate).GreaterThanOrEqualTo(new DateTime(1900, 1, 1)).WithMessage("İmza sirküler tarihi doğru girdiğinizden emin olunuz.");
+
+
 
         }
     }

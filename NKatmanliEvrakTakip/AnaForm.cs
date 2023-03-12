@@ -153,14 +153,15 @@ namespace EvrakTakipSistemi
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
+
             try
             {
                 Customer customer = new Customer();
                 customer.TaxIdentificationNumber = mskVkn.Text;
                 customer.CompanyName = tbxAd.Text;
                 customer.TaxPlateYear = tbxVergiYili.Text;
-                customer.ActivityCertificateDate = string.IsNullOrEmpty(mskFaaliyet.Text) ? null : DateTime.Parse(mskFaaliyet.Text);
-                customer.SignatureCircularDate = string.IsNullOrEmpty(mskImza.Text) ? null : DateTime.Parse(mskImza.Text);
+                customer.ActivityCertificateDate = DateTime.TryParse(mskFaaliyet.Text, out DateTime faaliyet) ? faaliyet : null;
+                customer.SignatureCircularDate = DateTime.TryParse(mskImza.Text, out DateTime imza) ? imza : null;
                 customer.CompanyOfficials = rtbxFirmaYetkili.Text;
 
 
