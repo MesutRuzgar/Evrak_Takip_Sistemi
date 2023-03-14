@@ -156,49 +156,62 @@ namespace EvrakTakipSistemi
 
             try
             {
-                Customer customer = new Customer();
-                customer.TaxIdentificationNumber = mskVkn.Text;
-                customer.CompanyName = tbxAd.Text;
-                customer.TaxPlateYear = tbxVergiYili.Text;
-                customer.ActivityCertificateDate = DateTime.TryParse(mskFaaliyet.Text, out DateTime faaliyet) ? faaliyet : null;
-                customer.SignatureCircularDate = DateTime.TryParse(mskImza.Text, out DateTime imza) ? imza : null;
-                customer.CompanyOfficials = rtbxFirmaYetkili.Text;
-
-
-                // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
-
-                var validationResult = validator.Validate(customer);
-
-                if (validationResult.IsValid)
+                bool check = customerManager.CheckCustomerByTaxId(mskVkn.Text);
+                if (check == true)
                 {
-                    if (MessageBox.Show("İletişim bilgileri eklemek istiyor musunuz?", "Bilgilendirme Penceresi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        IletısımKayıt fr = new IletısımKayıt();
-                        DialogResult result2 = fr.ShowDialog();
-
-                        if (result2 == DialogResult.OK)
-                        {
-                            customer.Phone = tel;
-                            customer.Email = email;
-                        }
-                        else
-                        {
-                            customer.Phone = null;
-                            customer.Email = null;
-                        }
-                    }
-
-                    customerManager.Add(customer);
-                    MessageBox.Show("Ekleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FillCustomerTable();
-                    ClearForm();
+                    MessageBox.Show("Müşteri kayıtlı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    // Hata mesajlarını gösteriyoruz.
-                    string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
-                    MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Customer customer = new Customer();
+                    customer.TaxIdentificationNumber = mskVkn.Text;
+                    customer.CompanyName = tbxAd.Text;
+                    customer.TaxPlateYear = tbxVergiYili.Text;
+                    customer.ActivityCertificateDate = DateTime.TryParse(mskFaaliyet.Text, out DateTime faaliyet) ? faaliyet : null;
+                    customer.SignatureCircularDate = DateTime.TryParse(mskImza.Text, out DateTime imza) ? imza : null;
+                    customer.CompanyOfficials = rtbxFirmaYetkili.Text;
+
+
+                    // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
+
+                    var validationResult = validator.Validate(customer);
+
+                    if (validationResult.IsValid)
+                    {
+                        if (MessageBox.Show("İletişim bilgileri eklemek istiyor musunuz?", "Bilgilendirme Penceresi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            IletısımKayıt fr = new IletısımKayıt();
+                            DialogResult result2 = fr.ShowDialog();
+
+                            if (result2 == DialogResult.OK)
+                            {
+                                customer.Phone = tel;
+                                customer.Email = email;
+                            }
+                            else
+                            {
+                                customer.Phone = null;
+                                customer.Email = null;
+                            }
+                        }
+
+                        customerManager.Add(customer);
+                        MessageBox.Show("Ekleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FillCustomerTable();
+                        ClearForm();
+                    }
+                    else
+                    {
+                        // Hata mesajlarını gösteriyoruz.
+                        string errorMessage = string.Join("\n", validationResult.Errors.Select(error => error.ErrorMessage));
+                        MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
+
+
+
+                
             }
             catch
             {

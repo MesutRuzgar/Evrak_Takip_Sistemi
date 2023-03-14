@@ -27,15 +27,17 @@ namespace Business.Concrete
             _customerDal.Add(customer);
         }
 
+        public bool CheckCustomerByTaxId(string taxId)
+        {
+            var customer = _customerDal.GetAll().FirstOrDefault(c=>c.TaxIdentificationNumber == taxId);
+            return customer != null;
+        }
+
         public void Delete(Customer customer)
         {
             _customerDal.Delete(customer);
         }
-
-        public List<Customer> GetAll()
-        {
-            return  _customerDal.GetAll();
-        }
+              
 
         public List<Customer> GetAll(int id)
         {
