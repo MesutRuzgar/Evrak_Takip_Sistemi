@@ -13,7 +13,7 @@ namespace Business.Validation
     {
         public CustomerValidator()
         {
-            RuleFor(x => x.CompanyName).NotNull().NotEmpty().WithMessage("Firma ismi boş olamaz!");
+            RuleFor(x => x.CompanyName).NotNull().NotEmpty().WithMessage("Müşteri ünvanı boş olamaz!");
             RuleFor(x => x.TaxIdentificationNumber).MinimumLength(10).WithMessage("Lütfen geçerli VKN giriniz!");
 
             //Faaliyet belgesi tarihi bugüne eşit veya  küçük olması gerekir
