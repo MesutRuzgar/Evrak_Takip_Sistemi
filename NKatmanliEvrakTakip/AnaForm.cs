@@ -35,15 +35,15 @@ namespace EvrakTakipSistemi
         private void AnaForm_Load(object sender, EventArgs e)
         {
             FillCustomerTable();
-           
+
         }
 
-       
+
 
         private void btnTemizle_Click(object sender, EventArgs e)
         {
             ClearForm();
-           
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -96,7 +96,7 @@ namespace EvrakTakipSistemi
                         MessageBox.Show("Güncelleme işlemi başarılı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         FillCustomerTable();
                         ClearForm();
-                
+
                     }
                     else
                     {
@@ -293,7 +293,7 @@ namespace EvrakTakipSistemi
             }
         }
 
-      
+
     }
 
 }

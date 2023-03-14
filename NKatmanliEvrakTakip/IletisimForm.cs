@@ -62,7 +62,7 @@ namespace EvrakTakipSistemi
 
                 var validationResult = validator.Validate(customer);
 
-                    // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
+                // FluentValidation kullanarak verilerin doğruluğunu kontrol ediyoruz.
                 if (validationResult.IsValid)
                 {
                     customerManager.Update(customer);
@@ -76,14 +76,14 @@ namespace EvrakTakipSistemi
                 }
 
             }
-            catch 
+            catch
             {
 
                 MessageBox.Show("İletişim bilgileri güncellenirken bir hata oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
 
-        
+
+
         }
     }
 }

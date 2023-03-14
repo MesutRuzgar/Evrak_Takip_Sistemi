@@ -32,13 +32,6 @@ namespace EvrakTakipSistemi
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
             groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            TaxIdentificationNumber = new DataGridViewTextBoxColumn();
-            CompanyName = new DataGridViewTextBoxColumn();
-            TaxPlateYear = new DataGridViewTextBoxColumn();
-            ActivityCertificateDate = new DataGridViewTextBoxColumn();
-            SignatureCircularDate = new DataGridViewTextBoxColumn();
-            CompanyOfficials = new DataGridViewTextBoxColumn();
             label1 = new Label();
             tbxSearch = new TextBox();
             label2 = new Label();
@@ -51,6 +44,7 @@ namespace EvrakTakipSistemi
             label6 = new Label();
             label7 = new Label();
             groupBox2 = new GroupBox();
+            mskImza = new MaskedTextBox();
             mskFaaliyet = new MaskedTextBox();
             btnIletisim = new Button();
             pictureBox5 = new PictureBox();
@@ -65,7 +59,13 @@ namespace EvrakTakipSistemi
             btnEkle = new Button();
             rtbxFirmaYetkili = new RichTextBox();
             pictureBox1 = new PictureBox();
-            mskImza = new MaskedTextBox();
+            Id = new DataGridViewTextBoxColumn();
+            TaxIdentificationNumber = new DataGridViewTextBoxColumn();
+            CompanyName = new DataGridViewTextBoxColumn();
+            TaxPlateYear = new DataGridViewTextBoxColumn();
+            ActivityCertificateDate = new DataGridViewTextBoxColumn();
+            SignatureCircularDate = new DataGridViewTextBoxColumn();
+            CompanyOfficials = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
@@ -98,55 +98,6 @@ namespace EvrakTakipSistemi
             dataGridView1.TabIndex = 0;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Müşteri No";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            // 
-            // TaxIdentificationNumber
-            // 
-            TaxIdentificationNumber.DataPropertyName = "TaxIdentificationNumber";
-            TaxIdentificationNumber.HeaderText = "VERGİ KİMLİK NUMARASI";
-            TaxIdentificationNumber.Name = "TaxIdentificationNumber";
-            TaxIdentificationNumber.ReadOnly = true;
-            // 
-            // CompanyName
-            // 
-            CompanyName.DataPropertyName = "CompanyName";
-            CompanyName.HeaderText = "FİRMA AD";
-            CompanyName.Name = "CompanyName";
-            CompanyName.ReadOnly = true;
-            // 
-            // TaxPlateYear
-            // 
-            TaxPlateYear.DataPropertyName = "TaxPlateYear";
-            TaxPlateYear.HeaderText = "VERGİ LEVHASI YILI";
-            TaxPlateYear.Name = "TaxPlateYear";
-            TaxPlateYear.ReadOnly = true;
-            // 
-            // ActivityCertificateDate
-            // 
-            ActivityCertificateDate.DataPropertyName = "ActivityCertificateDate";
-            ActivityCertificateDate.HeaderText = "FAALİYET BELGESİ TARİHİ";
-            ActivityCertificateDate.Name = "ActivityCertificateDate";
-            ActivityCertificateDate.ReadOnly = true;
-            // 
-            // SignatureCircularDate
-            // 
-            SignatureCircularDate.DataPropertyName = "SignatureCircularDate";
-            SignatureCircularDate.HeaderText = "İMZA SİRKÜLER TARİHİ";
-            SignatureCircularDate.Name = "SignatureCircularDate";
-            SignatureCircularDate.ReadOnly = true;
-            // 
-            // CompanyOfficials
-            // 
-            CompanyOfficials.DataPropertyName = "CompanyOfficials";
-            CompanyOfficials.HeaderText = "FİRMA YETKİLİLERİ";
-            CompanyOfficials.Name = "CompanyOfficials";
-            CompanyOfficials.ReadOnly = true;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -167,11 +118,11 @@ namespace EvrakTakipSistemi
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(121, 69);
+            label2.Location = new Point(28, 72);
             label2.Name = "label2";
-            label2.Size = new Size(46, 18);
+            label2.Size = new Size(139, 18);
             label2.TabIndex = 3;
-            label2.Text = "VKN :";
+            label2.Text = "VERGİ KİMLİK NO :";
             // 
             // mskVkn
             // 
@@ -185,11 +136,11 @@ namespace EvrakTakipSistemi
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(82, 99);
+            label3.Location = new Point(26, 102);
             label3.Name = "label3";
-            label3.Size = new Size(85, 18);
+            label3.Size = new Size(141, 18);
             label3.TabIndex = 5;
-            label3.Text = "FİRMA AD :";
+            label3.Text = "MÜŞTERİ ÜNVANI :";
             // 
             // tbxAd
             // 
@@ -272,6 +223,15 @@ namespace EvrakTakipSistemi
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
             groupBox2.Text = "MÜŞTERİ BİLGİLERİ";
+            // 
+            // mskImza
+            // 
+            mskImza.Location = new Point(617, 69);
+            mskImza.Mask = "00/00/0000";
+            mskImza.Name = "mskImza";
+            mskImza.Size = new Size(153, 24);
+            mskImza.TabIndex = 25;
+            mskImza.ValidatingType = typeof(DateTime);
             // 
             // mskFaaliyet
             // 
@@ -407,14 +367,54 @@ namespace EvrakTakipSistemi
             pictureBox1.TabIndex = 15;
             pictureBox1.TabStop = false;
             // 
-            // mskImza
+            // Id
             // 
-            mskImza.Location = new Point(617, 69);
-            mskImza.Mask = "00/00/0000";
-            mskImza.Name = "mskImza";
-            mskImza.Size = new Size(153, 24);
-            mskImza.TabIndex = 25;
-            mskImza.ValidatingType = typeof(DateTime);
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Müşteri No";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // TaxIdentificationNumber
+            // 
+            TaxIdentificationNumber.DataPropertyName = "TaxIdentificationNumber";
+            TaxIdentificationNumber.HeaderText = "VERGİ KİMLİK NUMARASI";
+            TaxIdentificationNumber.Name = "TaxIdentificationNumber";
+            TaxIdentificationNumber.ReadOnly = true;
+            // 
+            // CompanyName
+            // 
+            CompanyName.DataPropertyName = "CompanyName";
+            CompanyName.HeaderText = "MÜŞTERİ ÜNVANI";
+            CompanyName.Name = "CompanyName";
+            CompanyName.ReadOnly = true;
+            // 
+            // TaxPlateYear
+            // 
+            TaxPlateYear.DataPropertyName = "TaxPlateYear";
+            TaxPlateYear.HeaderText = "VERGİ LEVHASI YILI";
+            TaxPlateYear.Name = "TaxPlateYear";
+            TaxPlateYear.ReadOnly = true;
+            // 
+            // ActivityCertificateDate
+            // 
+            ActivityCertificateDate.DataPropertyName = "ActivityCertificateDate";
+            ActivityCertificateDate.HeaderText = "FAALİYET BELGESİ TARİHİ";
+            ActivityCertificateDate.Name = "ActivityCertificateDate";
+            ActivityCertificateDate.ReadOnly = true;
+            // 
+            // SignatureCircularDate
+            // 
+            SignatureCircularDate.DataPropertyName = "SignatureCircularDate";
+            SignatureCircularDate.HeaderText = "İMZA SİRKÜLER TARİHİ";
+            SignatureCircularDate.Name = "SignatureCircularDate";
+            SignatureCircularDate.ReadOnly = true;
+            // 
+            // CompanyOfficials
+            // 
+            CompanyOfficials.DataPropertyName = "CompanyOfficials";
+            CompanyOfficials.HeaderText = "FİRMA YETKİLİLERİ";
+            CompanyOfficials.Name = "CompanyOfficials";
+            CompanyOfficials.ReadOnly = true;
             // 
             // AnaForm
             // 
@@ -477,17 +477,17 @@ namespace EvrakTakipSistemi
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnIletisim;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn TaxIdentificationNumber;
-        private new DataGridViewTextBoxColumn CompanyName;
-        private DataGridViewTextBoxColumn TaxPlateYear;
-        private DataGridViewTextBoxColumn ActivityCertificateDate;
-        private DataGridViewTextBoxColumn SignatureCircularDate;
-        private DataGridViewTextBoxColumn CompanyOfficials;
         private DateTimePicker dtpFaaliyet;
         private DateTimePicker dtpImza;
         private MaskedTextBox mskFaaliyet;
         private MaskedTextBox mskImza;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn TaxIdentificationNumber;
+        private DataGridViewTextBoxColumn CompanyName;
+        private DataGridViewTextBoxColumn TaxPlateYear;
+        private DataGridViewTextBoxColumn ActivityCertificateDate;
+        private DataGridViewTextBoxColumn SignatureCircularDate;
+        private DataGridViewTextBoxColumn CompanyOfficials;
     }
 }
 

@@ -70,12 +70,12 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(43, 85);
+            label2.Location = new Point(5, 85);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(117, 20);
+            label2.Size = new Size(155, 20);
             label2.TabIndex = 6;
-            label2.Text = "MÜŞTERİ AD :";
+            label2.Text = "MÜŞTERİ ÜNVANI :";
             // 
             // label3
             // 
