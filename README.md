@@ -32,7 +32,7 @@ Merhaba,
   4.  **Müşteri iletişim bilgileri** --> https://www.hizliresim.com/r8fhy2r
   5.  **Vergi levhası yılı kontrol** --> https://www.hizliresim.com/50p6x61 
   6.  **Faaliyet belgesi kontrol** --> https://www.hizliresim.com/5r8m5z4
->Vergi levhası ve faaliyet belgesi kontrolleri ekleme ve güncellemede aktif rol oynamaktadır. Vergi levhası yılları 1 yıl geriden geldiğinden mütevellik günümüzün yılının 1 eksiği baz alınarak doğrulama yapılmaktadır. Elektronik imzalı faaliyet belgeleri günümüzde daha yaygın olduğundan mütevellit faaliyet belgesi geçerlilik tarihi 60 gün olarak hesaplama yapacak şekilde tasarlanmıştır.
+>Vergi levhası ve faaliyet belgesi kontrolleri ekleme ve güncellemede aktif rol oynamaktadır. Vergi levhası yılları 1 yıl geriden geldiğinden mütevellit günümüzün yılının 1 eksiği baz alınarak doğrulama yapılmaktadır. Elektronik imzalı faaliyet belgeleri günümüzde daha yaygın olduğundan mütevellit faaliyet belgesi geçerlilik tarihi 60 gün olarak hesaplama yapacak şekilde tasarlanmıştır.
   8.  **Hatalı işlem** --> https://www.hizliresim.com/p3mwhut
 >Güncelleme ve silme işlemleri için tablodan seçim yapılması gerekmektedir aksi takdirde herhangi bir işlem yapılmamaktadır.
   9.  **Filtrelme** -->https://www.hizliresim.com/hrcksvr
